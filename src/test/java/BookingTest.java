@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class BookingTest {
 
@@ -29,6 +30,12 @@ public class BookingTest {
     @Test
     public void hasNumberOfNights() {
         assertEquals(3, booking.getNights());
+    }
+
+    @Test
+    public void canMakeNewBooking() {
+        Booking anObject = booking.newBooking(bedroom, 3);
+        assertTrue(anObject.getClass() == Booking.class);
     }
 
 }

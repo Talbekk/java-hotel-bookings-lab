@@ -19,4 +19,10 @@ public class Booking {
     public int getNights() {
         return this.nights;
     }
+
+
+    public Booking newBooking(Bedroom bedroom, int nights) {
+        Booking booking = new Booking(nights, bedroom);
+        return booking;
+    }
 }

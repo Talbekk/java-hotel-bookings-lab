@@ -9,6 +9,7 @@ public class HotelTest {
     private Guest guest;
     private Bedroom bedroom;
     private ConferenceRoom conferenceRoom;
+    private Booking booking;
 
     @Before
 
@@ -21,6 +22,7 @@ public class HotelTest {
 
         hotel.addBedroom(bedroom);
         hotel.addConferenceRoom(conferenceRoom);
+
     }
 
     @Test
@@ -52,5 +54,10 @@ public class HotelTest {
     public void canCheckOutGuest(){
         hotel.checkOutGuest(bedroom);
         assertEquals(0, bedroom.guestCount());
+    }
+
+    @Test
+    public void canBookRoom(){
+
     }
 }
