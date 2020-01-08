@@ -8,6 +8,7 @@ public class HotelTest {
     private Hotel hotel;
     private Guest guest;
     private Bedroom bedroom;
+    private Bedroom bedroom2;
     private ConferenceRoom conferenceRoom;
     private Booking booking;
 
@@ -18,9 +19,11 @@ public class HotelTest {
         hotel = new Hotel("CodeClan Towers");
         guest = new Guest("Donald");
         bedroom = new Bedroom(4, 2, 'S', false, 70);
+        bedroom2 = new Bedroom( 3, 4, 'D', false, 120);
         conferenceRoom = new ConferenceRoom("Ben Nevis", 50);
 
         hotel.addBedroom(bedroom);
+        hotel.addBedroom(bedroom2);
         hotel.addConferenceRoom(conferenceRoom);
 
     }
@@ -40,7 +43,7 @@ public class HotelTest {
     @Test
     public void canAddRoom(){
         hotel.addBedroom(bedroom);
-        assertEquals(2, hotel.bedroomCount());
+        assertEquals(3, hotel.bedroomCount());
         hotel.addConferenceRoom(conferenceRoom);
         assertEquals(2, hotel.conferenceRoomCount());
     }
@@ -68,5 +71,11 @@ public class HotelTest {
         hotel.bookRoom(bedroom, 5);
         assertEquals(true, bedroom.getBookedStatus());
         assertEquals(null, hotel.bookRoom(bedroom, 2));
+    }
+
+    @Test
+    public void canGetCollectionOfVacantRooms() {
+        hotel.bookRoom(bedroom, 5);
+        assertEquals(1, hotel.getVacantRooms().size());
     }
 }
