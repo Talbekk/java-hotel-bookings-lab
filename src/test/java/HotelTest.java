@@ -17,7 +17,7 @@ public class HotelTest {
 
         hotel = new Hotel("CodeClan Towers");
         guest = new Guest("Donald");
-        bedroom = new Bedroom(4, 2, 'S');
+        bedroom = new Bedroom(4, 2, 'S', false, 70);
         conferenceRoom = new ConferenceRoom("Ben Nevis", 50);
 
         hotel.addBedroom(bedroom);
@@ -58,6 +58,15 @@ public class HotelTest {
 
     @Test
     public void canBookRoom(){
+        hotel.bookRoom(bedroom, 5);
+        assertEquals(true, bedroom.getBookedStatus());
 
+    }
+
+    @Test
+    public void cantBookRoomIfOccupied() {
+        hotel.bookRoom(bedroom, 5);
+        assertEquals(true, bedroom.getBookedStatus());
+        assertEquals(null, hotel.bookRoom(bedroom, 2));
     }
 }

@@ -1,7 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
 
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class BedroomTest {
 
@@ -10,7 +12,7 @@ public class BedroomTest {
 
     @Before
     public void before() {
-        bedroom = new Bedroom(6, 4, 'D');
+        bedroom = new Bedroom(6, 4, 'D', false, 70);
         guest = new Guest("Jeremy");
     }
 
@@ -44,6 +46,22 @@ public class BedroomTest {
     public void canRemoveGuests(){
         bedroom.removeGuests();
         assertEquals(0, bedroom.guestCount());
+    }
+
+    @Test
+    public void isVacant(){
+        assertFalse(bedroom.getBookedStatus());
+    }
+
+    @Test
+    public void canChangeBookedStatus() {
+        bedroom.changeBookedStatus();
+        assertEquals(true, bedroom.getBookedStatus());
+    }
+
+    @Test
+    public void hasNightlyRate(){
+        assertEquals(70, bedroom.getRate());
     }
 
 }

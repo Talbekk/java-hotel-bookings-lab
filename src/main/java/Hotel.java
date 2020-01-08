@@ -41,4 +41,14 @@ public class Hotel {
     public void checkOutGuest(Bedroom bedroom) {
         bedroom.removeGuests();
     }
+
+    public Booking bookRoom(Bedroom bedroom, int nights) {
+        if (bedroom.getBookedStatus() == false) {
+            Booking booking = new Booking();
+            booking = booking.newBooking(bedroom, nights);
+            bedroom.changeBookedStatus();
+            return booking;
+            }
+        return null;
+    }
 }
