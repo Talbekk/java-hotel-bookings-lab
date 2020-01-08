@@ -18,6 +18,9 @@ public class HotelTest {
         guest = new Guest("Donald");
         bedroom = new Bedroom(4, 2, 'S');
         conferenceRoom = new ConferenceRoom("Ben Nevis", 50);
+
+        hotel.addBedroom(bedroom);
+        hotel.addConferenceRoom(conferenceRoom);
     }
 
     @Test
@@ -27,20 +30,21 @@ public class HotelTest {
 
     @Test
     public void roomsStartEmpty(){
-        assertEquals(0, hotel.bedroomCount());
-        assertEquals(0, hotel.conferenceRoomCount());
+        Hotel hauntedHotel = new Hotel("Dracula Manor");
+        assertEquals(0, hauntedHotel.bedroomCount());
+        assertEquals(0, hauntedHotel.conferenceRoomCount());
     }
 
     @Test
     public void canAddRoom(){
         hotel.addBedroom(bedroom);
-        assertEquals(1, hotel.bedroomCount());
+        assertEquals(2, hotel.bedroomCount());
         hotel.addConferenceRoom(conferenceRoom);
-        assertEquals(1, hotel.conferenceRoomCount());
+        assertEquals(2, hotel.conferenceRoomCount());
     }
 
-//    @Test public void canCheckInGuest(){
-//        hotel.checkInGuest(bedroom, guest);
-//        assertEquals(1, bedroom.guestCount());
-//    }
+    @Test public void canCheckInGuest(){
+        hotel.checkInGuest(bedroom, guest);
+        assertEquals(1, bedroom.guestCount());
+    }
 }

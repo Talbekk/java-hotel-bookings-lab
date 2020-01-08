@@ -29,4 +29,10 @@ public class ConferenceRoomTest {
     public void occupancyStartsEmpty(){
         assertEquals(0, conferenceRoom.guestCount());
     }
+
+    @Test
+    public void canAddGuest(){
+        conferenceRoom.addGuest(guest);
+        assertEquals(1, conferenceRoom.guestCount());
+    }
 }
